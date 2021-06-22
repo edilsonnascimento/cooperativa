@@ -2,18 +2,14 @@ package br.dafio.cooperativa.dto;
 
 import br.dafio.cooperativa.domain.Pauta;
 
-import java.time.LocalDateTime;
 import java.util.List;
 import java.util.stream.Collectors;
 
 public class PautaResponseDto {
 
 
+    private Long codigo;
     private String titulo;
-    private String descricao;
-    private LocalDateTime dataCadastro;
-    private LocalDateTime dataAlteracao;
-
 
     public String getTitulo() {
         return titulo;
@@ -23,36 +19,18 @@ public class PautaResponseDto {
         this.titulo = titulo;
     }
 
-    public String getDescricao() {
-        return descricao;
+    public Long getCodigo() {
+        return codigo;
     }
 
-    public void setDescricao(String descricao) {
-        this.descricao = descricao;
-    }
-
-    public LocalDateTime getDataCadastro() {
-        return dataCadastro;
-    }
-
-    public void setDataCadastro(LocalDateTime dataCadastro) {
-        this.dataCadastro = dataCadastro;
-    }
-
-    public LocalDateTime getDataAlteracao() {
-        return dataAlteracao;
-    }
-
-    public void setDataAlteracao(LocalDateTime dataAlteracao) {
-        this.dataAlteracao = dataAlteracao;
+    public void setCodigo(Long codigo) {
+        this.codigo = codigo;
     }
 
     private static PautaResponseDto mapper(Pauta pauta) {
         PautaResponseDto pautaResponseDto = new PautaResponseDto();
+        pautaResponseDto.setCodigo(pauta.getId());
         pautaResponseDto.setTitulo(pauta.getTitulo());
-        pautaResponseDto.setDescricao(pauta.getDescricao());
-        pautaResponseDto.setDataCadastro(pauta.getDataInclusao());
-        pautaResponseDto.setDataAlteracao(pauta.getDataAlteracao());
         return pautaResponseDto;
     }
 

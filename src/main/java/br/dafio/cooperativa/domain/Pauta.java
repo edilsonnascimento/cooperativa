@@ -1,6 +1,7 @@
 package br.dafio.cooperativa.domain;
 
 import javax.persistence.*;
+import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "pauta")
@@ -12,6 +13,7 @@ public class Pauta extends CooperativaDomain{
 	private Long id;
 	private String titulo;
 	private String descricao;
+	private LocalDateTime dataAlteracao;
 
 	@Override
 	public Long getId() {
