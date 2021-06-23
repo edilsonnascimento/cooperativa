@@ -1,4 +1,4 @@
-package br.dafio.cooperativa;
+package br.desafio.cooperativa.resource;
 
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;

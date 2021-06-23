@@ -1,4 +1,4 @@
-package br.dafio.cooperativa.service;
+package br.desafio.cooperativa.resource.service;
 
 import org.apache.logging.log4j.Logger;
 

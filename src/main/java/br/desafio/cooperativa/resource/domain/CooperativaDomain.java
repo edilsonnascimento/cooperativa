@@ -1,4 +1,4 @@
-package br.dafio.cooperativa.domain;
+package br.desafio.cooperativa.resource.domain;
 
 import javax.persistence.Column;
 import javax.persistence.MappedSuperclass;

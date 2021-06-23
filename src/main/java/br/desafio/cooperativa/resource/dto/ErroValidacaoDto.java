@@ -1,4 +1,4 @@
-package br.dafio.cooperativa.dto;
+package br.desafio.cooperativa.resource.dto;
 
 public class ErroValidacaoDto {
 

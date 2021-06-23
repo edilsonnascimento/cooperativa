@@ -1,11 +1,11 @@
-package br.dafio.cooperativa.service;
+package br.desafio.cooperativa.resource.service;
 
-import br.dafio.cooperativa.domain.Pauta;
-import br.dafio.cooperativa.dto.PautaRequestAtualizarDto;
-import br.dafio.cooperativa.dto.PautaRequestDto;
-import br.dafio.cooperativa.dto.PautaResponseDetalhadaDto;
-import br.dafio.cooperativa.dto.PautaResponseDto;
-import br.dafio.cooperativa.repositoy.PautaRepository;
+import br.desafio.cooperativa.resource.domain.Pauta;
+import br.desafio.cooperativa.resource.dto.PautaRequestAtualizarDto;
+import br.desafio.cooperativa.resource.dto.PautaRequestDto;
+import br.desafio.cooperativa.resource.dto.PautaResponseDetalhadaDto;
+import br.desafio.cooperativa.resource.dto.PautaResponseDto;
+import br.desafio.cooperativa.resource.repositoy.PautaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -27,9 +27,9 @@ public class PautaService {
                 : PautaResponseDto.converter(repository.findByTitulo(tituloPauta));
     }
 
-    public PautaResponseDetalhadaDto buscaDetalhada(Long id) {
+    public Optional<PautaResponseDetalhadaDto> buscaDetalhada(Long id) {
         Optional<Pauta> pauta = repository.findById(id);
-        return pauta.isPresent() ? PautaResponseDetalhadaDto.converter(pauta.get()) : new PautaResponseDetalhadaDto();
+        return pauta.isPresent() ? PautaResponseDetalhadaDto.converter(pauta.get()) : Optional.empty();
     }
 
     public Boolean atualizar(PautaRequestAtualizarDto pautaRequestDto, Long id) {
@@ -43,7 +43,12 @@ public class PautaService {
          return false;
     }
 
-    public void remover(Long id) {
-        repository.deleteById(id);
+    public Boolean remover(Long id) {
+        Optional<Pauta> pauta = repository.findById(id);
+        if(pauta.isPresent()){
+            repository.deleteById(id);
+            return true;
+        }
+        return false;
     }
 }

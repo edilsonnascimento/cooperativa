@@ -1,7 +1,6 @@
-package br.dafio.cooperativa.repositoy;
+package br.desafio.cooperativa.resource.repositoy;
 
-import br.dafio.cooperativa.domain.Pauta;
-import br.dafio.cooperativa.dto.PautaResponseDto;
+import br.desafio.cooperativa.resource.domain.Pauta;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;

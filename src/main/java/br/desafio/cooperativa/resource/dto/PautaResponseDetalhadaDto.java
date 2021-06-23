@@ -1,8 +1,9 @@
-package br.dafio.cooperativa.dto;
+package br.desafio.cooperativa.resource.dto;
 
-import br.dafio.cooperativa.domain.Pauta;
+import br.desafio.cooperativa.resource.domain.Pauta;
 
 import java.time.LocalDateTime;
+import java.util.Optional;
 
 public class PautaResponseDetalhadaDto extends PautaResponseDto{
 
@@ -44,8 +45,8 @@ public class PautaResponseDetalhadaDto extends PautaResponseDto{
         return pautaResponseDetalhadaDto;
     }
 
-    public static PautaResponseDetalhadaDto converter(Pauta pauta){
-        return mapper(pauta);
+    public static Optional<PautaResponseDetalhadaDto> converter(Pauta pauta){
+       return Optional.ofNullable(mapper(pauta));
     }
 
 }

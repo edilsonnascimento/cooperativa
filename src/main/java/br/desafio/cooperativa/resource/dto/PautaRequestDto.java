@@ -1,20 +1,16 @@
-package br.dafio.cooperativa.dto;
+package br.desafio.cooperativa.resource.dto;
+
+import br.desafio.cooperativa.resource.domain.Pauta;
 
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
-import java.time.LocalDateTime;
 
-public class PautaRequestAtualizarDto{
+public class PautaRequestDto {
 
     @NotNull @NotEmpty
     private String titulo;
     @NotNull @NotEmpty
     private String descricao;
-    private LocalDateTime dataAlteracao;
-
-    public PautaRequestAtualizarDto() {
-        this.dataAlteracao = LocalDateTime.now();
-    }
 
     public String getTitulo() {
         return titulo;
@@ -32,5 +28,10 @@ public class PautaRequestAtualizarDto{
         this.descricao = descricao;
     }
 
-
+    public static Pauta mapper(PautaRequestDto pautaRequestDto){
+        Pauta pauta = new Pauta();
+        pauta.setTitulo(pautaRequestDto.getTitulo());
+        pauta.setDescricao(pautaRequestDto.getDescricao());
+        return pauta;
+    }
 }

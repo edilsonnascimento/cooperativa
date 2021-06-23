@@ -1,11 +1,12 @@
-package br.dafio.cooperativa.resource;
+package br.desafio.cooperativa.resource.resource;
 
 
-import br.dafio.cooperativa.domain.Pauta;
-import br.dafio.cooperativa.dto.PautaRequestAtualizarDto;
-import br.dafio.cooperativa.dto.PautaRequestDto;
-import br.dafio.cooperativa.dto.PautaResponseDto;
-import br.dafio.cooperativa.service.PautaService;
+import br.desafio.cooperativa.resource.domain.Pauta;
+import br.desafio.cooperativa.resource.dto.PautaRequestAtualizarDto;
+import br.desafio.cooperativa.resource.dto.PautaRequestDto;
+import br.desafio.cooperativa.resource.dto.PautaResponseDetalhadaDto;
+import br.desafio.cooperativa.resource.dto.PautaResponseDto;
+import br.desafio.cooperativa.resource.service.PautaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -15,6 +16,7 @@ import javax.transaction.Transactional;
 import javax.validation.Valid;
 import java.net.URI;
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/pautas")
@@ -38,22 +40,23 @@ public class PautaResource {
     }
 
     @GetMapping("/{id}")
-    public PautaResponseDto detalhar(@PathVariable Long id){
-       return service.buscaDetalhada(id);
+    public ResponseEntity<PautaResponseDetalhadaDto> detalhar(@PathVariable Long id){
+        Optional<PautaResponseDetalhadaDto> pautaResponseDetalhada = service.buscaDetalhada(id);
+        if(pautaResponseDetalhada.isPresent()){
+            return ResponseEntity.ok(pautaResponseDetalhada.get());
+        }
+        return ResponseEntity.notFound().build();
     }
 
     @PutMapping("/{id}")
     @Transactional
     public ResponseEntity<PautaResponseDto> atualizar(@Valid @RequestBody PautaRequestAtualizarDto pautaRequestDto,                                                      @PathVariable Long id) {
-        return service.atualizar(pautaRequestDto, id) ? ResponseEntity.noContent().build() : ResponseEntity.badRequest().build();
+        return service.atualizar(pautaRequestDto, id) ? ResponseEntity.ok().build() : ResponseEntity.notFound().build();
     }
 
     @DeleteMapping("/{id}")
     @Transactional
     public ResponseEntity<PautaResponseDto> remover(@PathVariable Long id) {
-        service.remover(id);
-        return ResponseEntity.ok().build();
+        return service.remover(id) ? ResponseEntity.ok().build() : ResponseEntity.notFound().build();
     }
-
-
 }

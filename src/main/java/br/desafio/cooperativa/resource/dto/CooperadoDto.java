@@ -1,7 +1,6 @@
-package br.dafio.cooperativa.dto;
+package br.desafio.cooperativa.resource.dto;
 
-import br.dafio.cooperativa.domain.Cooperado;
-import br.dafio.cooperativa.domain.CooperativaDomain;
+import br.desafio.cooperativa.resource.domain.Cooperado;
 
 public class CooperadoDto {
 

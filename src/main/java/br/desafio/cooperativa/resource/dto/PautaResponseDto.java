@@ -1,6 +1,6 @@
-package br.dafio.cooperativa.dto;
+package br.desafio.cooperativa.resource.dto;
 
-import br.dafio.cooperativa.domain.Pauta;
+import br.desafio.cooperativa.resource.domain.Pauta;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -36,10 +36,6 @@ public class PautaResponseDto {
 
     public static List<PautaResponseDto> converter(List<Pauta> pautas){
         return pautas.parallelStream().map(PautaResponseDto::mapper).collect(Collectors.toList());
-    }
-
-    public static PautaResponseDto converter(Pauta pauta){
-        return mapper(pauta);
     }
 
 }
