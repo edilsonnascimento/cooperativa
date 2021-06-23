@@ -1,12 +1,14 @@
-package br.desafio.cooperativa.resource.service;
+package br.desafio.cooperativa.service;
 
 import org.apache.logging.log4j.Logger;
 
-public abstract class AbstractService {
+public abstract class AbstractService<T> {
 
     private static final String NMIDSESSAO = "nmIdSessao";
     private static final String NMIDTRANSACAO = "nmIdTransacao";
     private String identificador = "Serviço - ";
+
+
 
     protected abstract Logger getLogger();
 

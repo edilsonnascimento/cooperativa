@@ -1,4 +1,4 @@
-package br.desafio.cooperativa.resource;
+package br.desafio.cooperativa;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

@@ -1,6 +1,6 @@
-package br.desafio.cooperativa.resource.validacion;
+package br.desafio.cooperativa.validacion;
 
-import br.desafio.cooperativa.resource.dto.ErroValidacaoDto;
+import br.desafio.cooperativa.dto.ErroValidacaoDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.MessageSource;
 import org.springframework.context.i18n.LocaleContextHolder;

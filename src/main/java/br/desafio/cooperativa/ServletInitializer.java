@@ -1,5 +1,6 @@
-package br.desafio.cooperativa.resource;
+package br.desafio.cooperativa;
 
+import br.desafio.cooperativa.CooperativaApplication;
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
 

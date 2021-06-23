@@ -1,11 +1,11 @@
-package br.desafio.cooperativa.resource.service;
+package br.desafio.cooperativa.service;
 
-import br.desafio.cooperativa.resource.domain.Pauta;
-import br.desafio.cooperativa.resource.dto.PautaRequestAtualizarDto;
-import br.desafio.cooperativa.resource.dto.PautaRequestDto;
-import br.desafio.cooperativa.resource.dto.PautaResponseDetalhadaDto;
-import br.desafio.cooperativa.resource.dto.PautaResponseDto;
-import br.desafio.cooperativa.resource.repositoy.PautaRepository;
+import br.desafio.cooperativa.domain.Pauta;
+import br.desafio.cooperativa.dto.PautaRequestAtualizarDto;
+import br.desafio.cooperativa.dto.PautaRequestDto;
+import br.desafio.cooperativa.dto.PautaResponseDetalhadaDto;
+import br.desafio.cooperativa.dto.PautaResponseDto;
+import br.desafio.cooperativa.repositoy.PautaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -13,7 +13,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
-public class PautaService {
+public class PautaService{
 
     @Autowired
     private PautaRepository repository;

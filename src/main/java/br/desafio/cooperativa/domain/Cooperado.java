@@ -1,4 +1,4 @@
-package br.desafio.cooperativa.resource.domain;
+package br.desafio.cooperativa.domain;
 
 import javax.persistence.*;
 
@@ -10,8 +10,10 @@ public class Cooperado extends CooperativaDomain{
 	@Column(name = "id_cooperado")
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	private String cpf;
 	private String nome;
+	@Column(name = "documento_nacional")
+	private String documentoNacional;
+
 
 	@Override
 	public Long getId() {
@@ -22,12 +24,12 @@ public class Cooperado extends CooperativaDomain{
 		this.id = id;
 	}
 
-	public String getCpf() {
-		return cpf;
+	public String getDocumentoNacional() {
+		return documentoNacional;
 	}
 
-	public void setCpf(String cpf) {
-		this.cpf = cpf;
+	public void setDocumentoNacional(String documentoNacional) {
+		this.documentoNacional = documentoNacional;
 	}
 
 	public String getNome() {

@@ -1,6 +1,6 @@
-package br.desafio.cooperativa.resource.dto;
+package br.desafio.cooperativa.dto;
 
-import br.desafio.cooperativa.resource.domain.Pauta;
+import br.desafio.cooperativa.domain.Pauta;
 
 import java.util.List;
 import java.util.stream.Collectors;

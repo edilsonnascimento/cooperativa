@@ -1,12 +1,12 @@
-package br.desafio.cooperativa.resource.resource;
+package br.desafio.cooperativa.resource;
 
 
-import br.desafio.cooperativa.resource.domain.Pauta;
-import br.desafio.cooperativa.resource.dto.PautaRequestAtualizarDto;
-import br.desafio.cooperativa.resource.dto.PautaRequestDto;
-import br.desafio.cooperativa.resource.dto.PautaResponseDetalhadaDto;
-import br.desafio.cooperativa.resource.dto.PautaResponseDto;
-import br.desafio.cooperativa.resource.service.PautaService;
+import br.desafio.cooperativa.domain.Pauta;
+import br.desafio.cooperativa.dto.PautaRequestAtualizarDto;
+import br.desafio.cooperativa.dto.PautaRequestDto;
+import br.desafio.cooperativa.dto.PautaResponseDetalhadaDto;
+import br.desafio.cooperativa.dto.PautaResponseDto;
+import br.desafio.cooperativa.service.PautaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -27,10 +27,8 @@ public class PautaResource {
 
     @PostMapping
     public ResponseEntity<PautaResponseDto> inserir(@Valid @RequestBody PautaRequestDto pautaRequestDto, UriComponentsBuilder builder){
-
         Pauta pauta = service.inserir(pautaRequestDto);
         URI location = builder.path("/pautas/{id}").buildAndExpand(pauta.getId()).toUri();
-
         return ResponseEntity.created(location).build();
     }
 

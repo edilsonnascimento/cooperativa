@@ -1,4 +1,4 @@
-package br.desafio.cooperativa.resource.domain;
+package br.desafio.cooperativa.domain;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
