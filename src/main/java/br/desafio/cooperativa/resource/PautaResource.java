@@ -54,7 +54,7 @@ public class PautaResource {
 
     @DeleteMapping("/{id}")
     @Transactional
-    public ResponseEntity<PautaResponseDto> remover(@PathVariable Long id) {
+    public ResponseEntity<?> remover(@PathVariable Long id) {
         return service.remover(id) ? ResponseEntity.ok().build() : ResponseEntity.notFound().build();
     }
 }
