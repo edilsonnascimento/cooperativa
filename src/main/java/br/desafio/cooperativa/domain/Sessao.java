@@ -1,27 +1,39 @@
 package br.desafio.cooperativa.domain;
 
+import br.desafio.cooperativa.repositoy.SessaoRepository;
+import br.desafio.cooperativa.validacion.SessaoException;
+
 import javax.persistence.*;
 import java.time.LocalDateTime;
-import java.util.List;
+import java.util.Optional;
 
 @Entity
 @Table(name = "sessao")
-public class Sessao extends CooperativaDomain{
+public class Sessao{
 
 	@Id
 	@Column(name = "id_sessao")
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
+
+	@Column(name = "tempo_sessao")
+	private Long tempoSessao;
+
+	@Column(name = "dt_inicio")
 	private LocalDateTime inicioSessao;
+
+	@Column(name = "dt_fim")
 	private LocalDateTime fimSessao;
-	@OneToMany
-	private List<Cooperado> cooperados;
+
 	@OneToOne
+	@JoinColumn(name = "id_pauta")
 	private Pauta pauta;
 
-	@Override
+	public Sessao() {
+	}
+
 	public Long getId() {
-		return null;
+		return id;
 	}
 
 	public void setId(Long id) {
@@ -44,12 +56,22 @@ public class Sessao extends CooperativaDomain{
 		this.fimSessao = fimSessao;
 	}
 
-	public List<Cooperado> getCooperados() {
-		return cooperados;
+	public Long getTempoSessao() {
+		return tempoSessao;
 	}
 
-	public void setCooperados(List<Cooperado> cooperados) {
-		this.cooperados = cooperados;
+	public void setTempoSessao(Long tempoSessao) {
+		this.tempoSessao = tempoSessao;
+	}
+
+	public Boolean validar(){
+		return fimSessao.isBefore(LocalDateTime.now());
+	}
+
+	public static Sessao retornaSessao(Long idSessao, SessaoRepository repository) throws SessaoException {
+		Optional<Sessao> optional = repository.findById(idSessao);
+		if(!optional.isPresent()) throw new SessaoException("Sessão não encontrada.");
+		return optional.get();
 	}
 
 	public Pauta getPauta() {
@@ -58,6 +80,11 @@ public class Sessao extends CooperativaDomain{
 
 	public void setPauta(Pauta pauta) {
 		this.pauta = pauta;
+	}
+	
+	public void vincular(Pauta pauta){
+		this.pauta = pauta;
+		pauta.setSessao(this);
 	}
 }
  

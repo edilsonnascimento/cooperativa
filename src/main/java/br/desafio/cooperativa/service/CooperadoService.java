@@ -1,7 +1,6 @@
 package br.desafio.cooperativa.service;
 
 import br.desafio.cooperativa.domain.Cooperado;
-import br.desafio.cooperativa.domain.Pauta;
 import br.desafio.cooperativa.dto.CooperadoRequestAtualizarDto;
 import br.desafio.cooperativa.dto.CooperadoRequestDto;
 import br.desafio.cooperativa.dto.CooperadoResponseDetalhadaDto;
@@ -19,6 +18,9 @@ public class CooperadoService {
 
     @Autowired
     private CooperadoRepository repository;
+
+    @Autowired
+    private RelatorioService serviceRelatorio;
 
     public Long inserir(CooperadoRequestDto cooperadoRequestDto) {
         Optional<Cooperado> optionalCooperado = Optional.ofNullable(repository.save(CooperadoRequestDto.converter(cooperadoRequestDto)));
@@ -55,5 +57,13 @@ public class CooperadoService {
             return true;
         }
         return false;
+    }
+
+    public String gerarRelatorio(String formato) {
+        try {
+            return serviceRelatorio.exportRelatorio(formato);
+        } catch (Exception e) {
+            return  "Erro ao gerar relatório";
+        }
     }
 }

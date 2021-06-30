@@ -1,6 +1,10 @@
 package br.desafio.cooperativa.domain;
 
+import br.desafio.cooperativa.repositoy.CooperadoRepository;
+import br.desafio.cooperativa.validacion.CooperadoException;
+
 import javax.persistence.*;
+import java.util.Optional;
 
 @Entity
 @Table(name = "cooperado")
@@ -38,6 +42,12 @@ public class Cooperado extends CooperativaDomain{
 
 	public void setNome(String nome) {
 		this.nome = nome;
+	}
+
+	public static Cooperado retornaCooperado(Long idCooperado, CooperadoRepository repository) throws CooperadoException {
+		Optional<Cooperado> optional = repository.findById(idCooperado);
+		if(!optional.isPresent()) throw new CooperadoException("Cooperado não encontrado.");
+		return optional.get();
 	}
 
 }

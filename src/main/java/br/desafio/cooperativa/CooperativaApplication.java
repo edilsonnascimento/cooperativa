@@ -10,4 +10,5 @@ public class CooperativaApplication {
         SpringApplication.run(CooperativaApplication.class, args);
     }
 
+
 }

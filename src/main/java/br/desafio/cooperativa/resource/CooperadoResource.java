@@ -60,4 +60,10 @@ public class CooperadoResource {
     public ResponseEntity<?> remover(@PathVariable Long id){
         return service.remover(id) ? ResponseEntity.ok().build() : ResponseEntity.notFound().build();
     }
+
+    @GetMapping("/relatorio/{formato}")
+    public String gerarRelatorio(@PathVariable String formato){
+        return service.gerarRelatorio(formato);
+    }
+
 }
